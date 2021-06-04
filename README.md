@@ -14,6 +14,7 @@ Currently, requires following packages
 - torchvision 0.5+
 - CUDA 10.1+
 - scikit-learn 0.22+
+- faiss-gpu
 
 ### Datasets
 Download Market-1501 dataset to ./data
@@ -36,3 +37,9 @@ To train person re-ID in paper, run this command:
 ```train
 bash train_population.sh dukemtmc market1501 500
 ```
+
+## In Details
+```
+├──  peg
+│    └── population.py  - here's the operations of populations, including reproduction, mutation and selection.
+│    └── trainer.py - here's the mutual learning among populations.
