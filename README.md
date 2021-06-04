@@ -17,6 +17,7 @@ Currently, requires following packages
 
 ### Datasets
 Download Market-1501 dataset to ./data
+
 For example:
 
 ```
