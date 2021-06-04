@@ -41,7 +41,11 @@ To train person re-ID in paper, run this command:
 ```train
 bash train_population.sh dukemtmc market1501 500
 ```
-
+### Image retrieval
+To train Stardford online products in paper, run this command:
+```train
+bash train_population_sop.sh imagenet sop 10000
+```
 ## In Details
 ```
 ├──  peg
