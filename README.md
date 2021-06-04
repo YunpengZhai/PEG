@@ -31,6 +31,10 @@ For example:
 ```
 
 ## 2. Training & Evaluation
+### Pretrain
+You can load the weights pretrained on imagenet, or download the [weights](https://pan.baidu.com/s/12rRW4cnMbxe6x1YxXqNbyw) pretrained on source data. (iinq)
+
+You can also pretrain models by yourself.
 
 ### Person re-ID
 To train person re-ID in paper, run this command:
