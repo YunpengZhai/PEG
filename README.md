@@ -17,6 +17,12 @@ Currently, requires following packages
 
 ### Datasets
 Market-1501
+--data
+----market1501
+------Market-1501-v15.09.15
+--------bounding_box_train
+--------bounding_box_test
+--------query
 
 ## 2. Training & Evaluation
 
