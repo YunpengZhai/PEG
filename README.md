@@ -2,9 +2,9 @@
 
 Official PyTorch implementation of Population-based Evolutionary Game.
 
-<!-- <p align="center">
-    <img src=./img/ARPL.jpg width="800">
-</p> -->
+<p align="center">
+    <img src=./img/framework.jpg width="800">
+</p>
 
 ## 1. Requirements
 ### Environments
