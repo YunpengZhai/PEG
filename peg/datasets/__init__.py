@@ -19,6 +19,7 @@ __factory = {
 #     'cuhk03': CUHK03,
     'sop': SOP,
     'cub': CUB,
+    'imagenet':None
 #     'car': CAR,
 #     'casia':CASIA,
 #     'lfw':LFW,

@@ -105,10 +105,11 @@ def create_population(archs, args):
             model = nn.DataParallel(model)
             model_ema = nn.DataParallel(model_ema)
             
-            cpt_path = osp.join(args.init_dir, "{}-pretrain".format(arch), "model_best.pth.tar")
-            initial_weights = load_checkpoint(cpt_path)
-            copy_state_dict(initial_weights['state_dict'], model)
-            copy_state_dict(initial_weights['state_dict'], model_ema)
+            if args.dataset_source!='imagenet':
+                cpt_path = osp.join(args.init_dir, "{}-pretrain".format(arch), "model_best.pth.tar")
+                initial_weights = load_checkpoint(cpt_path)
+                copy_state_dict(initial_weights['state_dict'], model)
+                copy_state_dict(initial_weights['state_dict'], model_ema)
             model_ema.module.classifier.weight.data.copy_(model.module.classifier.weight.data)
 
             for param in model_ema.parameters():
@@ -119,31 +120,6 @@ def create_population(archs, args):
                            'lr':args.lr,
                            'epsilon': args.epsilon,
             }
-            agent = Agent(str(i), arch, hyper_param, model, model_ema, args)
-            agents.append(agent)
-    else:
-        print("create population from checkpoint in {}".format(args.resume_dir))
-        cpt_list = glob.glob(args.resume_dir+"/model*_checkpoint.pth.tar")
-        cpt_list = np.sort(cpt_list)
-        agent_num = len(cpt_list)
-        agents=[]
-        for i in range(agent_num):
-            agent_cpt = load_checkpoint(cpt_list[i])
-            arch = agent_cpt['arch']
-            model = models.create(arch, num_features=args.features, dropout=args.dropout, num_classes=args.num_clusters, rmds=args.downsampling, pool="gem").cuda()
-            model_ema = models.create(arch, num_features=args.features, dropout=args.dropout, num_classes=args.num_clusters, rmds=args.downsampling, pool="gem").cuda()
-
-            model = nn.DataParallel(model)
-            model_ema = nn.DataParallel(model_ema)
-            
-            copy_state_dict(agent_cpt['state_dict'], model)
-            copy_state_dict(agent_cpt['state_dict'], model_ema)
-            model_ema.module.classifier.weight.data.copy_(model.module.classifier.weight.data)
-
-            for param in model_ema.parameters():
-                param.detach_()
-
-            hyper_param = agent_cpt['hyperparam']
             agent = Agent(str(i), arch, hyper_param, model, model_ema, args)
             agents.append(agent)
 
@@ -167,7 +143,6 @@ def main_worker(args):
     global start_epoch, best_mAP
 
     cudnn.benchmark = False
-    # cudnn.benchmark = True
 
     sys.stdout = Logger(osp.join(args.logs_dir, 'log.txt'))
     print("==========\nArgs:{}\n==========".format(args))
