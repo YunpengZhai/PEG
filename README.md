@@ -1,6 +1,6 @@
 # PEG
 
-Official PyTorch implementation of Population-based Evolutionary Game.
+Official PyTorch implementation of Population-based Evolutionary Gaming.
 
 <p align="center">
     <img src=./img/framework.jpg width="800">
@@ -31,27 +31,14 @@ For example:
 ```
 
 ## 2. Training & Evaluation
-### Pretrain
-You can load the weights pretrained on imagenet by
-```train
-bash train_population.sh imagenet <dataset> <cluster-number>
-```
-or download the [weights](https://pan.baidu.com/s/12rRW4cnMbxe6x1YxXqNbyw) pretrained on source data. (iinq)
 
-You can also pretrain models by yourself.
-
-### Person re-ID
 To train person re-ID in paper, run this command:
 ```train
-bash train_population.sh dukemtmc market1501 500
+bash train_population.sh imagenet market1501 500
 ```
-### Image retrieval
-To train Stardford online products in paper, run this command:
-```train
-bash train_population_sop.sh imagenet sop 10000
-```
+
 ## In Details
 ```
 ├──  peg
 │    └── population.py  - here's the operations of populations, including reproduction, mutation and selection.
-│    └── trainer.py - here's the mutual learning among populations.
+│    └── trainer.py - here's the population mutual learning.
