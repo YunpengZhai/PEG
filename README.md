@@ -1,8 +1,8 @@
 # PEG
 
 Official PyTorch implementation of Population-based Evolutionary Gaming. 
-"Population-Based Evolutionary Gaming for Unsupervised Person Re-identification" IJCV 2023.
 
+Zhai, Y., Peng, P., Jia, M. et al. Population-Based Evolutionary Gaming for Unsupervised Person Re-identification. Int J Comput Vis 131, 1–25 (2023). https://doi.org/10.1007/s11263-022-01693-7
 
 
 <p align="center">
